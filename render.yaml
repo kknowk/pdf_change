@@ -2,8 +2,10 @@ services:
   - type: web
     name: pdf-converter
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python app.py
+    buildCommand: |
+      apt-get update && apt-get install -y gcc libmupdf-dev
+      pip install -r requirements.txt
+    startCommand: gunicorn app:app
     envVars:
       - key: FLASK_ENV
         value: development
