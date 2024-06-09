@@ -3,7 +3,7 @@ services:
     name: pdf-converter
     env: python
     buildCommand: |
-      apt-get update && apt-get install -y gcc libmupdf-dev libmupdf3
+      apt-get update && apt-get install -y gcc libmupdf-dev libmupdf3 mupdf-tools
       pip install -r requirements.txt
     startCommand: gunicorn app:app
     envVars:
